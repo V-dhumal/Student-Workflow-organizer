@@ -70,13 +70,13 @@ const NavBar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="/components/CreatTask" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
+                        <Link href="/tasks" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
                             <TaskIcon className="w-5 h-5" />
                             <span className="ml-3">Create Task</span>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/CreatTask" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
+                        <Link href="./tasks/AddEvent" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
                             <TaskIcon className="w-5 h-5" />
                             <span className="ml-3">Digital Events</span>
                         </Link>
@@ -89,7 +89,7 @@ const NavBar = () => {
             <section className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-center p-10 rounded-lg shadow-md">
                 <h1 className="text-4xl font-bold">Organize Your Student Life Effortlessly</h1>
                 <p className="mt-3 text-lg">Manage tasks, deadlines, and collaboration all in one place.</p>
-                <Link href="/create-task">
+                <Link href="/tasks">
                     <button className="mt-5 bg-white text-blue-500 px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100">
                         Get Started
                     </button>

@@ -19,7 +19,7 @@ export default function Page() {
         <section className="p-4 sm:ml-64 h-128 bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div className="w-full h-20 flex items-center justify-between p-2 text-gray-900 rounded-lg dark:text-white bg-gray-100 dark:bg-gray-700 group">
                 <div>Organize Your Life</div>
-                <Link href="/AddEvent/">
+                <Link href="/events">
                     <button className="w-40 flex items-center justify-evenly p-2 rounded-lg text-white bg-green-500 hover:bg-green-600 transition-all">
                         <AddTaskIcon />
                         Add Event

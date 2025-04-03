@@ -38,7 +38,7 @@ export default function LoginPage() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 p-6">
+    <section className="min-h-screen flex items-center justify-center  p-6">
       <div className="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Welcome Back</h2>
         
@@ -46,7 +46,7 @@ export default function LoginPage() {
           <p className="text-red-500 text-center mb-4">{errorMessage}</p>
         )}
 
-        <form onSubmit={submitHandler} className="space-y-4">
+        <form onSubmit={submitHandler} className="space-y-4 ">
           <div>
             <label className="block text-gray-700">Email Address</label>
             <input 

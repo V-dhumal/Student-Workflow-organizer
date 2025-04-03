@@ -18,8 +18,19 @@ const CreateTask = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Task Created:", task);
+
+    // Retrieve existing tasks from localStorage
+    const existingTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+    // Add the new task
+    const updatedTasks = [...existingTasks, task];
+
+    // Save updated tasks to localStorage
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+
     alert("Task Created Successfully!");
+
+    // Reset form
     setTask({
       title: "",
       description: "",

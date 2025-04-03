@@ -1,101 +1,157 @@
-"use client";
+"use client"; 
 
 import React, { useState } from 'react';
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import HomeIcon from '@mui/icons-material/Home';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import SchoolIcon from '@mui/icons-material/School';
+import GroupIcon from '@mui/icons-material/Group';
+import EventIcon from '@mui/icons-material/Event';
+import OverviewIcon from '@mui/icons-material/Event';
 import TaskIcon from '@mui/icons-material/Assignment';
-
+import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 
 const NavBar = () => {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [divHidden, setDivHidden] = useState<boolean>(true);
+  const [droplistMekhebi, setDroplistMekhebi] = useState<boolean>(true);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    if (!email || !password) return console.log("Missing required data");
-
-    try {
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password, rememberMe }),
-      });
-      
-      if (res.ok) {
-        router.push("/home"); // Redirect to home page on success
-      } else {
-        console.log("Login failed");
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  // show profile setting
+  const changeCurrntAction = () => {
+    setDivHidden((prevIsActive) => !prevIsActive);
   };
+
+  // action for show droplist of overView
+  const ShowDropList = () =>{
+    setDroplistMekhebi((prevIsActive) => !prevIsActive)
+  }
 
   return (
     <>
-        <nav className="fixed top-0 z-50 w-full bg-gray-900 border-b border-gray-700 text-white">
+        <nav className="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div className="px-3 py-3 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start">
+                        <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" className="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                            <span className="sr-only">Open sidebar</span>
+                            <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path clipRule="evenodd" fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
+                            </svg>
+                        </button>
                         <Link href="/home" className="flex ml-2 md:mr-24">
                             <img src="/logo.jpg" className="h-8 mr-3 rounded-sm" alt="workflow Logo" />
-                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap">WorkFlow Organizer</span>
+                            <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">WorkFlow Organizer</span>
                         </Link>
                     </div>
-                    <div className="flex items-center space-x-4">
-                        <Link href="/login" className="px-4 py-2 text-sm font-medium bg-blue-500 rounded-md hover:bg-blue-600">Login</Link>
-                        <Link href="/signup" className="px-4 py-2 text-sm font-medium bg-green-500 rounded-md hover:bg-green-600">Sign Up</Link>
+
+                    <div className="flex items-center">
+                        <div className="flex items-center ml-3">
+                            <div>
+                                <button type="button" className="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user" onClick={changeCurrntAction}>
+                                    <span className="sr-only">Open user menu</span>
+                                    <img className="w-8 h-8 rounded-full" src="./logo.jpg" alt="user photo" />
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav><br /><br />
 
-        <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 bg-gray-800 border-r border-gray-700 text-white" aria-label="Sidebar">
-            <div className="h-full px-3 pb-4 overflow-y-auto">
+        <div className={`z-50 my-4 ${divHidden ? 'hidden' : ''} absolute top-11 right-2 h-58 w-64 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`} id="dropdown-user">
+            <div className="px-4 py-3" role="none">
+                <p className="text-sm text-gray-900 dark:text-white" role="none">
+                anounymous tikhit
+                </p>
+                <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                anounymous.tikhit@gmail.com
+                </p>
+            </div>
+            <ul className="py-1" role="none">
+                <li>
+                <Link href="/home" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</Link>
+                </li>
+                <li>
+                <Link href="/events" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</Link>
+                </li>
+                <li>
+                <Link href="/calender" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Calendar</Link>
+                </li>
+                <li>
+                <Link href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</Link>
+                </li>
+            </ul>
+        </div>
+
+        <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700" aria-label="Sidebar">
+            <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
                 <ul className="space-y-2 font-medium">
                     <li>
-                        <Link href="/home" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
-                            <HomeIcon className="w-5 h-5" />
-                            <span className="ml-3">Dashboard</span>
+                        <Link href="/home" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <HomeIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Dashboard</span>
+                        </Link>
+                    </li>
+
+                    <li>
+                        <button type="button" onClick={ShowDropList} className="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
+                            <OverviewIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 text-left whitespace-nowrap">Overview</span>
+                            <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                        </button>
+                        <ul id="dropdown-example" className={`${droplistMekhebi ? 'hidden' : ''} py-2 space-y-2`}>
+                            <li>
+                                <Link href="/overview" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                    <TaskIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                                    <span className="flex-1 ml-3 whitespace-nowrap">My Tasks</span>
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/activity" className="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">
+                                    <TaskIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                                    <span className="flex-1 ml-3 whitespace-nowrap">Activities</span>
+                                </Link>
+                            </li>
+                           
+                        </ul>
+                    </li>
+
+                    <li>
+                        <Link href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <GroupIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Friends</span>
+                            <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                        </Link>
+                    </li>
+                    
+                    <li>
+                        <Link href="/calendar" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <CalendarMonthIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Calendar</span>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/calendar" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
-                            <CalendarMonthIcon className="w-5 h-5" />
-                            <span className="ml-3">Calendar</span>
+                        <Link href="/tasks" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <SchoolIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Create Task</span>
                         </Link>
                     </li>
                     <li>
-                        <Link href="/tasks" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
-                            <TaskIcon className="w-5 h-5" />
-                            <span className="ml-3">Create Task</span>
+                        <Link href="" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <EventIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Digital Events</span>
                         </Link>
                     </li>
                     <li>
-                        <Link href="./tasks/AddEvent" className="flex items-center p-2 hover:bg-gray-700 rounded-lg">
-                            <TaskIcon className="w-5 h-5" />
-                            <span className="ml-3">Digital Events</span>
+                        <Link href="/signup" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <EventIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Sign Up</span>
                         </Link>
                     </li>
                 </ul>
             </div>
         </aside>
-
-        <div className="p-4 sm:ml-64 mt-16">
-            <section className="bg-gradient-to-r from-purple-500 to-blue-500 text-white text-center p-10 rounded-lg shadow-md">
-                <h1 className="text-4xl font-bold">Organize Your Student Life Effortlessly</h1>
-                <p className="mt-3 text-lg">Manage tasks, deadlines, and collaboration all in one place.</p>
-                <Link href="/tasks">
-                    <button className="mt-5 bg-white text-blue-500 px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100">
-                        Get Started
-                    </button>
-                </Link>
-            </section>
-        </div>
     </>
   );
 };

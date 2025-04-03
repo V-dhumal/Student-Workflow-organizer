@@ -6,12 +6,14 @@ function AddEvent() {
   const [eventTitle, setEventTitle] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
+  const [eventLocation, setEventLocation] = useState("");
   const [eventDescription, setEventDescription] = useState("");
   const [eventCategory, setEventCategory] = useState("Meeting");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!eventTitle || !eventDate || !eventTime) {
+
+    if (!eventTitle || !eventDate || !eventTime || !eventLocation) {
       alert("Please fill in all required fields!");
       return;
     }
@@ -20,17 +22,28 @@ function AddEvent() {
       title: eventTitle,
       date: eventDate,
       time: eventTime,
+      location: eventLocation,
       description: eventDescription,
       category: eventCategory,
     };
 
-    console.log("Event Created:", newEvent);
+    // Retrieve existing events from localStorage
+    const savedEvents = JSON.parse(localStorage.getItem("events") || "[]");
+
+    // Add new event and save it back to localStorage
+    const updatedEvents = [...savedEvents, newEvent];
+    localStorage.setItem("events", JSON.stringify(updatedEvents));
+
+    // Notify other components (Activity.tsx) about the update
+    window.dispatchEvent(new Event("storage"));
+
     alert("Event successfully added!");
 
-    // Reset form
+    // Reset form fields
     setEventTitle("");
     setEventDate("");
     setEventTime("");
+    setEventLocation("");
     setEventDescription("");
     setEventCategory("Meeting");
   };
@@ -73,6 +86,16 @@ function AddEvent() {
             </div>
           </div>
           <div>
+            <label className="block text-gray-600">Location</label>
+            <input
+              type="text"
+              className="w-full p-2 border rounded-lg"
+              value={eventLocation}
+              onChange={(e) => setEventLocation(e.target.value)}
+              required
+            />
+          </div>
+          <div>
             <label className="block text-gray-600">Category</label>
             <select
               className="w-full p-2 border rounded-lg"
@@ -105,4 +128,5 @@ function AddEvent() {
     </div>
   );
 }
+
 export default AddEvent;

@@ -60,10 +60,10 @@ const NavBar = () => {
         <div className={`z-50 my-4 ${divHidden ? 'hidden' : ''} absolute top-11 right-2 h-58 w-64 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600`} id="dropdown-user">
             <div className="px-4 py-3" role="none">
                 <p className="text-sm text-gray-900 dark:text-white" role="none">
-                anounymous tikhit
+                
                 </p>
                 <p className="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
-                anounymous.tikhit@gmail.com
+               
                 </p>
             </div>
             <ul className="py-1" role="none">
@@ -116,15 +116,6 @@ const NavBar = () => {
                            
                         </ul>
                     </li>
-
-                    <li>
-                        <Link href="#" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                            <GroupIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
-                            <span className="flex-1 ml-3 whitespace-nowrap">Friends</span>
-                            <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
-                        </Link>
-                    </li>
-                    
                     <li>
                         <Link href="/calendar" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <CalendarMonthIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
@@ -138,7 +129,7 @@ const NavBar = () => {
                         </Link>
                     </li>
                     <li>
-                        <Link href="" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <Link href="/digitalEvent" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <EventIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
                             <span className="flex-1 ml-3 whitespace-nowrap">Digital Events</span>
                         </Link>

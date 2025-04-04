@@ -38,6 +38,30 @@ const DigitalEventPage = () => {
       link: "https://example.com/productivity-workshop",
       category: "Workshop",
     },
+    {
+      title: "AI and the Future of Work",
+      description: "Explore how AI is transforming the job market and industries worldwide.",
+      date: "2025-04-18",
+      time: "3:00 PM",
+      link: "https://example.com/ai-future-work",
+      category: "Tech Talk",
+    },
+    {
+      title: "Virtual Networking Night",
+      description: "Connect with like-minded professionals and expand your network.",
+      date: "2025-04-20",
+      time: "7:00 PM",
+      link: "https://example.com/networking-night",
+      category: "Networking Event",
+    },
+    {
+      title: "Mental Health Awareness Webinar",
+      description: "Join experts to discuss mental well-being and self-care strategies.",
+      date: "2025-04-22",
+      time: "5:30 PM",
+      link: "https://example.com/mental-health-webinar",
+      category: "Health & Wellness",
+    }
   ]);
 
   const getCategoryColor = (category: string) => {
@@ -48,6 +72,12 @@ const DigitalEventPage = () => {
         return "bg-green-100 text-green-700";
       case "Workshop":
         return "bg-yellow-100 text-yellow-700";
+      case "Tech Talk":
+        return "bg-blue-100 text-blue-700";
+      case "Networking Event":
+        return "bg-red-100 text-red-700";
+      case "Health & Wellness":
+        return "bg-pink-100 text-pink-700";
       default:
         return "bg-gray-100 text-gray-700";
     }

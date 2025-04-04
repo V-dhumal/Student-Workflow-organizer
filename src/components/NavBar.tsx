@@ -37,12 +37,16 @@ const NavBar = () => {
                                 <path clipRule="evenodd" fillRule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
                             </svg>
                         </button>
-                        <Link href="/home" className="flex ml-2 md:mr-24">
+                        <Link href="/home" className="flex item-center ml-2 md:mr-3">
                             <img src="/logo.jpg" className="h-8 mr-3 rounded-sm" alt="workflow Logo" />
                             <span className="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">WorkFlow Organizer</span>
                         </Link>
                     </div>
 
+                    <div className="flex ml-20 space-x-9">
+                        <Link href="/login" className="px-4 py-2 text-sm font-medium bg-blue-500 rounded-md hover:bg-blue-600">Login</Link>
+                        <Link href="/signup" className="px-4 py-2 text-sm font-medium bg-green-500 rounded-md hover:bg-green-600">Sign Up</Link>
+                    </div>
                     <div className="flex items-center">
                         <div className="flex items-center ml-3">
                             <div>
@@ -116,6 +120,15 @@ const NavBar = () => {
                            
                         </ul>
                     </li>
+
+                    <li>
+                        <Link href="/friend" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                            <GroupIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>
+                            <span className="flex-1 ml-3 whitespace-nowrap">Friends</span>
+                            <span className="inline-flex items-center justify-center w-3 h-3 p-3 ml-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">3</span>
+                        </Link>
+                    </li>
+                    
                     <li>
                         <Link href="/calendar" className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                             <CalendarMonthIcon className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"/>

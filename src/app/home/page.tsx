@@ -15,7 +15,15 @@ export default function page() {
             <div className="p-4 sm:ml-64">
                 {/* Hero Section */}
                 
-
+                <section className="bg-blue-500 text-white text-center p-10 rounded-lg shadow-md">
+                    <h1 className="text-4xl font-bold">Organize Your Student Life Effortlessly</h1>
+                    <p className="mt-3 text-lg">Manage tasks, deadlines, and collaboration all in one place.</p>
+                    <Link href="/login">
+                        <button className="mt-5 bg-white text-blue-500 px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-gray-100">
+                            Get Started
+                        </button>
+                    </Link>
+                </section>
                 {/* Features Section */}
                 <section className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
                     {[
@@ -37,7 +45,7 @@ export default function page() {
                         {[
                             { step: "Sign Up", link: "/signup" },
                             { step: "Create Tasks", link: "/tasks" },
-                            { step: "Stay Organized", link: "/home" }
+                            { step: "Stay Organized", link: "/digitalEvent" }
                         ].map((item, index) => (
                             <Link key={index} href={item.link}>
                                 <div className="bg-gray-100 p-6 rounded-lg shadow-md cursor-pointer hover:bg-gray-200">

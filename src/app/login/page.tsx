@@ -79,11 +79,13 @@ export default function LoginPage() {
               />
               Remember Me
             </label>
-            <Link href="#" className="text-blue-500 text-sm hover:underline">Forgot Password?</Link>
+            <Link href="/" className="text-blue-500 text-sm hover:underline">Forgot Password?</Link>
           </div>
+          <Link href="/tasks">
           <button type="submit" className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold rounded-lg px-4 py-3 transition duration-300">
             Log In
           </button>
+          </Link>
         </form>
         
         <div className="mt-6 text-center text-gray-500">OR</div>

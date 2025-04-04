@@ -97,10 +97,10 @@ export default function LoginPage() {
 
         <div className="mt-4 flex flex-col gap-3">
           <button className="w-full flex items-center justify-center bg-gray-100 border py-2 rounded-lg hover:shadow-md transition duration-300">
-            <img src="/google-icon.svg" alt="Google" className="w-5 h-5 mr-2" /> Login with Google
+             Login with Google
           </button>
           <button className="w-full flex items-center justify-center bg-gray-100 border py-2 rounded-lg hover:shadow-md transition duration-300">
-            <img src="/github-icon.svg" alt="GitHub" className="w-5 h-5 mr-2" /> Login with GitHub
+             Login with GitHub
           </button>
         </div>
 

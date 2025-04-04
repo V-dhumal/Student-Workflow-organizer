@@ -76,8 +76,8 @@ export default function page() {
                         ].map((user, index) => (
                             <SwiperSlide key={index}>
                                 <div className="bg-blue-100 p-6 rounded-lg shadow-md mx-4">
-                                    <p className="text-gray-900 italic">"{user.review}"</p>
-                                    <h4 className="mt-3 text-lg font-semibold text-blue-800">- {user.name}</h4>
+                                    <p className="text-gray-900 italic">{user.review}</p>
+                                    <h4 className="mt-3 text-lg font-semibold text-blue-800"> {user.name}</h4>
                                 </div>
                             </SwiperSlide>
                         ))}

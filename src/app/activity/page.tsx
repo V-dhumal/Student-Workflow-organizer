@@ -18,24 +18,27 @@ const Activity: React.FC = () => {
   }, []);
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-md w-full max-w-4xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Upcoming Events</h2>
+    <div className="p-4 sm:p-6 md:p-8 bg-white rounded-lg shadow-md w-full max-w-5xl mx-auto">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-800">📌 Upcoming Events</h2>
+      
       {events.length > 0 ? (
-        <ul className="space-y-6">
+        <ul className="space-y-4 sm:space-y-6">
           {events.map((event, index) => (
-            <li key={index} className="p-5 border border-gray-300 rounded-lg bg-gray-50 shadow-sm">
-              <h3 className="text-2xl font-semibold text-blue-700 mb-2">{event.title}</h3>
-              <p className="text-gray-700 mb-2">{event.description}</p>
-              <div className="text-sm text-gray-600 flex justify-between mb-1">
+            <li key={index} className="p-4 sm:p-5 border border-gray-200 rounded-xl bg-gray-50 shadow-sm transition hover:shadow-md">
+              <h3 className="text-lg sm:text-xl font-semibold text-blue-700 mb-2">{event.title}</h3>
+              <p className="text-sm sm:text-base text-gray-700 mb-2">{event.description}</p>
+
+              <div className="text-xs sm:text-sm text-gray-600 flex flex-col sm:flex-row sm:justify-between mb-1 gap-1">
                 <span className="font-medium">📅 {event.date}</span>
                 <span className="font-medium">⏰ {event.time}</span>
               </div>
-              <p className="text-sm text-gray-600 font-semibold">📍 {event.location}</p>
+
+              <p className="text-xs sm:text-sm text-gray-600 font-semibold">📍 {event.location}</p>
             </li>
           ))}
         </ul>
       ) : (
-        <p className="text-gray-500 text-center text-lg">No upcoming events.</p>
+        <p className="text-gray-500 text-center text-base sm:text-lg">No upcoming events.</p>
       )}
     </div>
   );

@@ -45,9 +45,10 @@ export default function FriendsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="min-h-screen bg-gray-50 px-4 py-6 md:px-8">
       <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">Friends</h1>
 
+      {/* Search */}
       <div className="max-w-xl mx-auto mb-6">
         <Input
           placeholder="Search friends..."
@@ -56,9 +57,11 @@ export default function FriendsPage() {
         />
       </div>
 
-      <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
+      {/* Friends & Requests */}
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Friends List */}
         <Card>
-          <CardContent >
+          <CardContent>
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <Users className="w-5 h-5" /> Your Friends
             </h2>
@@ -74,7 +77,7 @@ export default function FriendsPage() {
                         {friend.status}
                       </span>
                     </div>
-                    <UserCheck className="text-blue-500" />
+                    <UserCheck className="text-blue-500 w-5 h-5" />
                   </li>
                 ))}
               </ul>
@@ -82,8 +85,9 @@ export default function FriendsPage() {
           </CardContent>
         </Card>
 
+        {/* Friend Requests */}
         <Card>
-          <CardContent >
+          <CardContent>
             <h2 className="text-xl font-semibold mb-4 flex items-center gap-2">
               <UserPlus className="w-5 h-5" /> Friend Requests
             </h2>
@@ -103,14 +107,19 @@ export default function FriendsPage() {
         </Card>
       </div>
 
-      <div className="max-w-xl mx-auto mt-6 p-4 bg-white shadow rounded-lg">
+      {/* Send Friend Request */}
+      <div className="max-w-xl mx-auto mt-8 p-4 bg-white shadow rounded-lg">
         <h2 className="text-xl font-semibold mb-4 text-center">Send Friend Request</h2>
-        <Input
-          placeholder="Enter friend's name..."
-          value={newRequest}
-          onChange={(e) => setNewRequest(e.target.value)}
-        />
-        <Button className="w-full mt-3" onClick={handleSendRequest}>Send Request</Button>
+        <div className="space-y-3">
+          <Input
+            placeholder="Enter friend's name..."
+            value={newRequest}
+            onChange={(e) => setNewRequest(e.target.value)}
+          />
+          <Button className="w-full" onClick={handleSendRequest}>
+            Send Request
+          </Button>
+        </div>
       </div>
     </div>
   );

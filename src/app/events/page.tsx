@@ -27,19 +27,14 @@ function AddEvent() {
       category: eventCategory,
     };
 
-    // Retrieve existing events from localStorage
     const savedEvents = JSON.parse(localStorage.getItem("events") || "[]");
-
-    // Add new event and save it back to localStorage
     const updatedEvents = [...savedEvents, newEvent];
     localStorage.setItem("events", JSON.stringify(updatedEvents));
 
-    // Notify other components (Activity.tsx) about the update
     window.dispatchEvent(new Event("storage"));
 
     alert("Event successfully added!");
 
-    // Reset form fields
     setEventTitle("");
     setEventDate("");
     setEventTime("");
@@ -49,56 +44,60 @@ function AddEvent() {
   };
 
   return (
-    <div className="min-h-screen p-6 bg-gray-100 flex flex-col justify-center items-center">
-      <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-lg">
-        <h2 className="text-2xl font-bold text-gray-700 mb-6">Add New Event</h2>
-        <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="min-h-screen bg-gradient-to-br from-blue-100 to-white flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-xl bg-white p-8 rounded-2xl shadow-md">
+        <h2 className="text-3xl font-bold text-blue-800 mb-6 text-center">📅 Add New Event</h2>
+
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-gray-600">Event Title</label>
+            <label className="block text-gray-700 font-medium mb-1">Event Title<span className="text-red-500">*</span></label>
             <input
               type="text"
-              className="w-full p-2 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               value={eventTitle}
               onChange={(e) => setEventTitle(e.target.value)}
               required
             />
           </div>
-          <div className="grid grid-cols-2 gap-4">
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-gray-600">Date</label>
+              <label className="block text-gray-700 font-medium mb-1">Date<span className="text-red-500">*</span></label>
               <input
                 type="date"
-                className="w-full p-2 border rounded-lg"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 value={eventDate}
                 onChange={(e) => setEventDate(e.target.value)}
                 required
               />
             </div>
             <div>
-              <label className="block text-gray-600">Time</label>
+              <label className="block text-gray-700 font-medium mb-1">Time<span className="text-red-500">*</span></label>
               <input
                 type="time"
-                className="w-full p-2 border rounded-lg"
+                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 value={eventTime}
                 onChange={(e) => setEventTime(e.target.value)}
                 required
               />
             </div>
           </div>
+
           <div>
-            <label className="block text-gray-600">Location</label>
+            <label className="block text-gray-700 font-medium mb-1">Location<span className="text-red-500">*</span></label>
             <input
               type="text"
-              className="w-full p-2 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               value={eventLocation}
               onChange={(e) => setEventLocation(e.target.value)}
               required
             />
           </div>
+
           <div>
-            <label className="block text-gray-600">Category</label>
+            <label className="block text-gray-700 font-medium mb-1">Category</label>
             <select
-              className="w-full p-2 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               value={eventCategory}
               onChange={(e) => setEventCategory(e.target.value)}
             >
@@ -108,20 +107,23 @@ function AddEvent() {
               <option value="Personal">Personal</option>
             </select>
           </div>
+
           <div>
-            <label className="block text-gray-600">Description</label>
+            <label className="block text-gray-700 font-medium mb-1">Description</label>
             <textarea
-              className="w-full p-2 border rounded-lg"
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
               rows={3}
               value={eventDescription}
               onChange={(e) => setEventDescription(e.target.value)}
-            ></textarea>
+              placeholder="Optional notes or details"
+            />
           </div>
+
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-500"
+            className="w-full bg-blue-600 hover:bg-blue-500 text-white py-2 px-4 rounded-lg font-semibold transition duration-200"
           >
-            Add Event
+            ➕ Add Event
           </button>
         </form>
       </div>

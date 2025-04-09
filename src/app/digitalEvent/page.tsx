@@ -61,7 +61,7 @@ const DigitalEventPage = () => {
       time: "5:30 PM",
       link: "https://example.com/mental-health-webinar",
       category: "Health & Wellness",
-    }
+    },
   ]);
 
   const getCategoryColor = (category: string) => {
@@ -84,43 +84,54 @@ const DigitalEventPage = () => {
   };
 
   return (
-    <div className="min-h-screen p-6 bg-gradient-to-br from-blue-50 to-white">
-      <div className="max-w-6xl mx-auto">
-        <h1 className="text-4xl font-bold text-center text-blue-800 mb-10">🎥 Digital Events</h1>
+    <div className="min-h-screen px-4 py-10 bg-gradient-to-br from-blue-50 to-white">
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-10">
+          🎥 Digital Events
+        </h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {events.map((event, index) => (
             <div
               key={index}
-              className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 hover:shadow-xl transition duration-300"
+              className="bg-white border border-gray-200 rounded-2xl shadow-sm p-5 flex flex-col justify-between hover:shadow-xl transition duration-300"
             >
-              <div className="flex items-center justify-between mb-3">
-                <h2 className="text-xl font-semibold text-gray-800">{event.title}</h2>
-                <span
-                  className={`text-xs font-medium px-3 py-1 rounded-full ${getCategoryColor(
-                    event.category
-                  )}`}
+              <div>
+                <div className="flex items-start justify-between mb-3 gap-2">
+                  <h2 className="text-lg sm:text-xl font-semibold text-gray-800 leading-tight break-words">
+                    {event.title}
+                  </h2>
+                  <span
+                    className={`text-xs font-medium px-3 py-1 rounded-full whitespace-nowrap ${getCategoryColor(
+                      event.category
+                    )}`}
+                  >
+                    {event.category}
+                  </span>
+                </div>
+
+                <p className="text-sm text-gray-600 mb-4 break-words">
+                  {event.description}
+                </p>
+
+                <div className="flex items-center text-sm text-gray-500 mb-1">
+                  <CalendarDays className="w-4 h-4 mr-2" /> {event.date}
+                </div>
+                <div className="flex items-center text-sm text-gray-500 mb-4">
+                  <Clock className="w-4 h-4 mr-2" /> {event.time}
+                </div>
+              </div>
+
+              <div className="mt-auto">
+                <a
+                  href={event.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center w-full text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-medium transition duration-200"
                 >
-                  {event.category}
-                </span>
+                  Join Now <ExternalLink className="w-4 h-4 ml-2" />
+                </a>
               </div>
-              <p className="text-sm text-gray-600 mb-4">{event.description}</p>
-
-              <div className="flex items-center text-sm text-gray-500 mb-1">
-                <CalendarDays className="w-4 h-4 mr-2" /> {event.date}
-              </div>
-              <div className="flex items-center text-sm text-gray-500 mb-3">
-                <Clock className="w-4 h-4 mr-2" /> {event.time}
-              </div>
-
-              <a
-                href={event.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded-lg text-sm font-medium transition"
-              >
-                Join Now <ExternalLink className="w-4 h-4" />
-              </a>
             </div>
           ))}
         </div>
